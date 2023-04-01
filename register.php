@@ -1,10 +1,18 @@
+<?php
+if (isset($_GET["plan"])) {
+  $plan = $_GET["plan"];
+} else {
+  header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Goldel Skills</title>
+    <title>Golden Skills</title>
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -22,13 +30,15 @@
           <div class="card mt-5">
             <div class="card-body">
               <h2 class="text-center mb-4">Registro</h2>
-              <form>
+              <form action="registro.php" method="POST">
+                <input type="hidden" name="plan" value="<?= $plan ?>">
                 <div class="form-group">
                   <label for="email">Correo Electrónico</label>
                   <input
                     type="email"
                     class="form-control"
                     id="email"
+                    name="email"
                     placeholder="Ingrese su correo electrónico"
                   />
                 </div>
@@ -38,6 +48,7 @@
                     type="text"
                     class="form-control"
                     id="usuario"
+                    name="usuario"
                     placeholder="Ingrese un nombre de usuario"
                   />
                 </div>
@@ -46,7 +57,8 @@
                   <input
                     type="password"
                     class="form-control"
-                    id="contraseña"
+                    id="contrasena"
+                    name="contrasena"
                     placeholder="Ingrese una contraseña"
                   />
                 </div>
@@ -55,7 +67,8 @@
                   <input
                     type="password"
                     class="form-control"
-                    id="repetirContraseña"
+                    id="repetirContrasena"
+                    name="repetirContrasena"
                     placeholder="Repita la contraseña"
                   />
                 </div>

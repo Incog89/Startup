@@ -1,3 +1,8 @@
+<?php
+  $empleado = $_GET["idem"];  
+?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,20 +25,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="login.php">
-              <i class="bi bi-door-open-fill"></i> Iniciar sesión
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="register.php">
-              <i class="bi bi-box-arrow-in-right"></i> Registrar Empleadosmysql
+            <a class="nav-link" href="index.php">
+              <i class="bi bi-door-open-fill"></i> Inicio
             </a>
           </li>
         </ul>
       </div>
     </nav>
     <p>Instrucciones: Escoja de cada grupo de caracteristicas, la que mejor le describa y la que menos le describa</p>
-        <form>
+      <form method="POST" action=insertarEncuesta.php>
+      <input type="hidden" name="plan" value="<?= $empleado ?>">
       <div class="form-group">
         <label for="exampleInputEmail1">Grupo 1<br>
           1.- Persuasivo<br>
@@ -41,8 +42,8 @@
           3.- Humilde<br>
           4.- Original
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[1][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[1][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 2<br>
           1.- Agresivo<br>
@@ -50,8 +51,8 @@
           3.- Comodino<br>
           4.- Temeroso
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[2][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[2][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 3<br>
           1.- Agradable<br>
@@ -59,8 +60,8 @@
           3.- Tenaz<br>
           4.- Atractivo
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[3][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[3][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 4<br>
           1.- Cauteloso<br>
@@ -68,8 +69,8 @@
           3.- Convincente<br>
           4.- Bonachón
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[4][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[4][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 5<br>
           1.- Dócil<br>
@@ -77,8 +78,8 @@
           3.- Leal<br>
           4.- Encantador
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[5][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[5][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 6<br>
           1.- Dispuesto<br>
@@ -86,16 +87,16 @@
           3.- Consecuente<br>
           4.- Entusiasta
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[6][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[6][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div><label for="exampleInputEmail1">Grupo 7<br>
           1.- Fuerza de voluntad<br>
           2.- Mente abierta<br>
           3.- Complaciente<br>
           4.- Animoso
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[7][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[7][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 8<br>
           1.- Confiado<br>
@@ -103,8 +104,8 @@
           3.- Tolerante<br>
           4.- Afirmativo
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[8][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[8][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 9<br>
           1.- Ecuánime<br>
@@ -112,8 +113,8 @@
           3.- Nervioso<br>
           4.- Jovanil
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[9][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[9][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 10<br>
           1.- Disciplinado<br>
@@ -121,8 +122,8 @@
           3.- Animoso<br>
           4.- Persistente
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[10][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[10][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 11<br>
           1.- Competitivo<br>
@@ -130,8 +131,8 @@
           3.- Considerado<br>
           4.- Armonioso
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[11][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[11][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 12<br>
           1.- Admirable<br>
@@ -139,8 +140,8 @@
           3.- Resignado<br>
           4.- Carácter firme
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[12][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[12][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 13<br>
           1.- Obediente<br>
@@ -148,8 +149,8 @@
           3.- Inconquistable<br>
           4.- Juguetón
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[13][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[13][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 14<br>
           1.- Respetuoso<br>
@@ -157,8 +158,8 @@
           3.- Optimista<br>
           4.- Servicial
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[14][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[14][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 15<br>
           1.- Valiente<br>
@@ -166,8 +167,8 @@
           3.- Sumiso<br>
           4.- Timido
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[15][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[15][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 16<br>
           1.- Adaptable<br>
@@ -175,8 +176,8 @@
           3.- Indiferente<br>
           4.- Sangre liviana
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[16][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[16][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 17<br>
           1.- Amiguero<br>
@@ -184,8 +185,8 @@
           3.- Confianza en si mismo<br>
           4.- Mesurado para hablar
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[17][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[17][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       <label for="exampleInputEmail1">Grupo 18<br>
           1.- Conforme<br>
@@ -193,14 +194,11 @@
           3.- Pacifico<br>
           4.- Positivo
         </label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mejor le describe">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Menos le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[18][respuestaP]" aria-describedby="emailHelp" placeholder="Mejor le describe">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="respuesta[18][respuestaN]" aria-describedby="emailHelp" placeholder="Menos le describe">
       </div>
       
-      
-      
-      
-      
+    
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

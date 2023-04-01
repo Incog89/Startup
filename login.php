@@ -22,29 +22,17 @@
           <div class="card mt-5">
             <div class="card-body">
               <h2 class="text-center mb-4">Iniciar Sesión</h2>
-              <form>
-                <div class="form-group">
-                  <label for="usuario">Usuario</label>
-                  <input
-                    type="usuario"
-                    class="form-control"
-                    id="usuario"
-                    placeholder="Ingrese el Usuario"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="Contraseña">Contraseña</label>
-                  <input
-                    type="contraseña"
-                    class="form-control"
-                    id="contraseña"
-                    placeholder="Ingrese la Contraseña"
-                  />
-                </div>
-                <button type="submit" class="btn btn-primary btn-block mt-4">
-                  Iniciar Sesión
-                </button>
-              </form>
+              <form action="autentificar.php" method="POST">
+              <div class="form-group">
+                <label for="usuario">Usuario</label>
+                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingrese el Usuario">
+              </div>
+              <div class="form-group">
+                <label for="contraseña">Contraseña</label>
+                <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Ingrese la Contraseña">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block mt-4">Iniciar Sesión</button>
+            </form>
             </div>
           </div>
         </div>

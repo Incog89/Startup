@@ -1,3 +1,29 @@
+<?php
+session_start();
+$showRegisterButton = false;
+$showRegisterButton2 = false;
+$nombreUsuario = '';
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    $showRegisterButton = true;
+    $clienteAdmin_id = $_SESSION["id"];
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "startup";
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("La conexión a la base de datos falló: " . $conn->connect_error);
+    }
+    $sql = "SELECT * FROM empleado WHERE clienteAdmin_id='$clienteAdmin_id'";
+    $result = $conn->query($sql);
+    $conn->close();
+}
+if (isset($_SESSION["loggedin2"]) && $_SESSION["loggedin2"] === true) {
+  $showRegisterButton2 = true;
+  $idem=$_SESSION["id2"];
+}
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,23 +45,44 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+          <?php if (!$showRegisterButton || !$showRegisterButton2) { ?>
           <li class="nav-item">
             <a class="nav-link" href="login.php">
               <i class="bi bi-door-open-fill"></i> Iniciar sesión
             </a>
           </li>
+          <?php } ?>
+          <?php if ($showRegisterButton) { ?>
+            <li class="nav-item">
+              <a class="nav-link" href="registerEmp.php">
+                <i class="bi bi-box-arrow-in-right"></i> Registrar Empleados
+              </a>
+            </li>
           <li class="nav-item">
-            <a class="nav-link" href="register.php">
-              <i class="bi bi-box-arrow-in-right"></i> Registrar Empleadosmysql
+            <a class="nav-link" href="close.php">
+              <i class="bi bi-box-arrow-in-right"></i> Cerrar sesion
             </a>
           </li>
+          <?php } ?>
+          <?php if ($showRegisterButton2) { ?>
+            <li class="nav-item">
+            <a class="nav-link" href="encuesta.php?idem=<?php echo $idem; ?>">
+                <i class="bi bi-box-arrow-in-right"></i> Entrar a encuesta
+              </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="close.php">
+              <i class="bi bi-box-arrow-in-right"></i> Cerrar sesion
+            </a>
+          <?php } ?>
         </ul>
-      </div>
+          </div>
     </nav>
     <div id="tableContainer"></div>
     <br>
     <br>
     <div class="container">
+    <?php if (!$showRegisterButton) { ?>  
       <div class="row">
         <div class="col-sm-4">
           <div class="card">
@@ -54,7 +101,7 @@
                 <li>Resultados generales con base a las áreas de oportunidad.</li>
               </ul>
               <br>
-              <a href="register.php" class="btn btn-primary">Registrarse</a>
+              <a href="register.php?plan=1" class="btn btn-primary">Registrarse</a>
             </div>
           </div>
         </div>
@@ -77,7 +124,7 @@
                 <li>Segunda evaluación.</li>
                 <li>Entrega de resultados finales.</li>
               </ul>
-              <a href="register.php" class="btn btn-primary">Registrarse</a>
+              <a href="register.php?plan=2" class="btn btn-primary">Registrarse</a>
             </div>
           </div>
         </div>
@@ -102,14 +149,42 @@
               </p>
               <br>
               <br>
-              <a href="register.php" class="btn btn-primary">Registrarse</a>
+              <a href="register.php?plan=3" class="btn btn-primary">Registrarse</a>
             </div>
           </div>
         </div>
       </div>
+    <?php } ?>
+    <?php if ($showRegisterButton) { ?>  
+          <div class="container">
+              <h2>Lista de empleados</h2>
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>Nombre</th>
+                          <th>Apellido</th>
+                          <th>Correo</th>
+                          <th>Puesto</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <?php while($row = $result->fetch_assoc()) { ?>
+                      <tr>
+                          <td><?php echo $row["id"]; ?></td>
+                          <td><?php echo $row["nombre"]; ?></td>
+                          <td><?php echo $row["apellido"]; ?></td>
+                          <td><?php echo $row["correo"]; ?></td>
+                          <td><?php echo $row["puesto"]; ?></td>
+                      </tr>
+                      <?php } ?>
+                  </tbody>
+              </table>
+          </div>
+      <?php } ?>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </body>
-</html>
+</html> 
