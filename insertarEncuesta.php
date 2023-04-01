@@ -26,6 +26,14 @@ if ($respuestas !== null) {
     }
 }
 
+$sql2 = "SELECT nombre FROM empleado WHERE id=$plan";
+$resultado = $conn->query($sql2);
+if ($resultado->num_rows > 0) {
+    $row = $resultado->fetch_assoc();
+    $nombre = $row['nombre'];
+}
+
+
 $conn->close();
 ?>
 
@@ -35,16 +43,14 @@ $conn->close();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Áreas de vulnerabilidad - Usuario: [nombre]</title>
-
-    <!-- Bootstrap 5 CSS -->
+    <title>Áreas de vulnerabilidad - Usuario: <?php echo $nombre; ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-JvQRx7oXz37iogHKfwGZLlwpI7AkFJhvxYg7NO0caUE8rsO+CKXzJdajFfrVWAlPy8LymTnm0nvTtT/C7VW18A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styleEnc.css" />
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Áreas de vulnerabilidad - Usuario: [nombre]</h1>
-
-        <div class="card mb-4">
+    <div class="container">
+        <h1 class="title">Áreas de vulnerabilidad - Usuario: <?php echo $nombre; ?></h1>    <div class="card">
             <div class="card-header">
                 <h2>Falta de tenacidad</h2>
             </div>
@@ -53,7 +59,7 @@ $conn->close();
             </div>
         </div>
 
-        <div class="card mb-4">
+        <div class="card">
             <div class="card-header">
                 <h2>Agresividad</h2>
             </div>
@@ -62,7 +68,7 @@ $conn->close();
             </div>
         </div>
 
-        <div class="card mb-4">
+        <div class="card">
             <div class="card-header">
                 <h2>Falta de originalidad</h2>
             </div>
@@ -71,7 +77,7 @@ $conn->close();
             </div>
         </div>
 
-        <div class="card mb-4">
+        <div class="card">
             <div class="card-header">
                 <h2>Bonachonería excesiva</h2>
             </div>
@@ -80,7 +86,7 @@ $conn->close();
             </div>
         </div>
 
-        <div class="card mb-4">
+        <div class="card">
             <div class="card-header">
                 <h2>Falta de atrevimiento</h2>
             </div>
@@ -89,8 +95,6 @@ $conn->close();
             </div>
         </div>
     </div>
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-owkNzIbV7KjREwNOgV7AxuOOZ9XVn8+GzyfJgkGNnZh+jbM7VjKw+ttL7VZNEpzoX9xB0+8KOFh2QVLE0gFQ2Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </body>
 </html>
 

@@ -45,7 +45,7 @@ if (isset($_SESSION["loggedin2"]) && $_SESSION["loggedin2"] === true) {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <?php if (!$showRegisterButton || !$showRegisterButton2) { ?>
+          <?php if (!$showRegisterButton) { ?>
           <li class="nav-item">
             <a class="nav-link" href="login.php">
               <i class="bi bi-door-open-fill"></i> Iniciar sesión
@@ -81,8 +81,8 @@ if (isset($_SESSION["loggedin2"]) && $_SESSION["loggedin2"] === true) {
     <div id="tableContainer"></div>
     <br>
     <br>
-    <div class="container">
-    <?php if (!$showRegisterButton) { ?>  
+    <div class="container">  
+    <?php if (!$showRegisterButton && !$showRegisterButton2) { ?>
       <div class="row">
         <div class="col-sm-4">
           <div class="card">
