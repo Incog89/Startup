@@ -1,0 +1,76 @@
+body {
+    background-color: #87e07b;
+  }
+  
+  .gradient-form {
+    background: linear-gradient(to right, #1CB5E0, #000851);
+  }
+  
+  .card {
+    border-radius: 15px;
+    border: none;
+  }
+  
+  .card-body {
+    padding: 2rem 2rem 1.5rem 2rem;
+  }
+  
+  .card-img-top {
+    border-top-right-radius: calc(15px - 1px);
+    border-top-left-radius: calc(15px - 1px);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .form-outline {
+    border-radius: 20px;
+  }
+  
+  .form-control:focus {
+    box-shadow: none;
+  }
+  
+  .form-label {
+    font-size: 0.875rem;
+    margin-left: 1rem;
+  }
+  
+  .btn-primary {
+    background-color: #41bbdd;
+    border: none;
+    border-radius: 20px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #128aa8;
+  }
+  
+  .btn-outline-danger {
+    border-color: #dc3545;
+    color: #dc3545;
+    border-radius: 20px;
+  }
+  
+  .btn-outline-danger:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+  }
+  
+  .text-muted {
+    font-size: 0.875rem;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .gradient-form {
+      background: #1CB5E0;
+    }
+  
+    .card-img-top {
+      border-radius: 15px 15px 0 0;
+    }
+  }
+  
